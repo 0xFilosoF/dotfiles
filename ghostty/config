@@ -1,1 +1,38 @@
-../../.config/ghostty/config
+# This is the configuration file for Ghostty.
+#
+# The template does not set any default options, since Ghostty ships
+# with sensible defaults for all options. Users should only need to set
+# options that they want to change from the default.
+#
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+
+# # Empty values are used to reset config keys to default.
+# key =
+# background = #282c34
+background = #181818
+term = xterm-256color
+
+font-family = JetBrainsMonoNL Nerd Font
+font-style = Regular
+
+font-family-bold = JetBrainsMonoNL Nerd Font  
+font-style-bold = Bold
+
+font-family-italic = JetBrainsMonoNL Nerd Font  
+font-style-italic = Italic
+
+font-family-bold-italic = JetBrainsMonoNL Nerd Font 
+font-style-bold-italic = Bold Italic
+
+background-opacity = 0.92
+background-blur = true
+
+
+# # Some config options have unique syntaxes for their value,
+# # which is explained in the docs for that config option.
+# # Just for example:
+# resize-overlay-duration = 4s 200ms
