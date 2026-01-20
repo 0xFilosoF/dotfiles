@@ -1,0 +1,6 @@
+[mgr]
+prepend_keymap = [
+	{ on = "<C-n>", run = 'shell -- dragon -i -T "$@"', desc = "Drag & drop files" },
+]
+
+
