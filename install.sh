@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # ----------------------------------------------------------
 # here can be the installation of your favorite packages
@@ -12,6 +12,7 @@ dotfiles_packages=(
   "tmux"
   "fzf"
   "gum"
+  "btop"
 )
 
 _is_installed() {
@@ -19,37 +20,14 @@ _is_installed() {
 }
 
 _check_command_exists() {
-    command -v "$1" >/dev/null 2>&1
-}
-
-_install_antidote() {
-  ANTIDOTE_REPO=${XDG_PROJECTS_DIR:-$HOME/Projects}/antidote
-
-  if [[ ! -d $ANTIDOTE_REPO ]]; then
-    echo ":: Installing antidote..."
-    git clone --depth=1 https://github.com/mattmc3/antidote $ANTIDOTE_REPO
-    source $ANTIDOTE_REPO/antidote.zsh
-    antidote load
-  else
-    echo ":: antidote is already installed."
-  fi
-}
-
-_install_dragon() {
-  DRAGON_REPO=${XDG_PROJECTS_DIR:-$HOME/Projects}/dragon
-
-  if [[ ! -d $DRAGON_REPO ]]; then
-    echo ":: Installing dragon..."
-    git clone https://github.com/mwh/dragon $DRAGON_REPO
-    make -C $DRAGON_REPO install
-  else
-    echo ":: dragon is already installed."
-  fi
+  command -v "$1" >/dev/null 2>&1
 }
 
 _install_packages() {
-  _install_antidote
-  _install_dragon
+  SCRIPT_PATH="${0:A:h}"
+
+  source $SCRIPT_PATH/scripts/antidote.sh
+  source $SCRIPT_PATH/scripts/dragon.sh
 
   if ! _check_command_exists "oh-my-posh"; then
     echo ":: Installing oh-my-posh..."
@@ -63,17 +41,24 @@ _install_packages() {
       echo ":: ${pkg} is already installed."
     else
       echo ":: Installing ${pkg}..."
+      # TODO: after sometimes change to `yay --noconfirm -S "$pkg"`
       sudo pacman -S "$pkg"
     fi
   done
 }
 
-read -p "Do you want to start installing dependencies? (Y/n): " yn
-if [[ ! $yn =~ ^[Yy]$ ]]; then
-    echo ":: Installation canceled."
-    exit 0
-fi
+# if test -z "$ZSH_VERSION"; then
+#   shellname=$(ps -p $$ -oargs= | awk 'NR=1{print $1}')
+#   echo >&2 "Expecting zsh. Found '$shellname'."
+#   exit 1
+# fi
+
+# read -p "Do you want to start installing dependencies? (Y/n): " yn
+# if [[ ! $yn =~ ^[Yy]$ ]]; then
+#   echo ":: Installation canceled."
+#   exit 0
+# fi
 
 _install_packages "${dotfiles_packages[@]}"
 
-stow .
+# stow .
