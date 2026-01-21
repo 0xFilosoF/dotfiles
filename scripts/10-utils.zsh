@@ -16,3 +16,22 @@ else
   echo ":: Installing oh-my-posh..."
   curl -s https://ohmyposh.dev/install.sh | bash -s
 fi
+
+NVM_DIR="$HOME/.nvm"
+
+if [[ ! -d $NVM_DIR ]]; then
+  echo ":: Installing nvm..."
+  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+else
+  echo ":: nvm is already installed."
+fi
+
+PYENV_DIR="$HOME/.pyenv" 
+
+if [[ ! -d $PYENV_DIR ]]; then
+  echo ":: Installing pyenv..."
+  curl -fsSL https://pyenv.run | bash
+else
+  echo ":: pyenv is already installed."
+fi
+
