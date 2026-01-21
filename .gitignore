@@ -1,9 +1,11 @@
+# Tmp files
 *.bak
 *.local
 
-plugins/
-history
-.zhistory
-.zsh_history
-.zcompdump
-.zsh_plugins.zsh
+# Fallback, must be in .local or .cache
+tmux/plugins/
+zsh/history
+zsh/.zhistory
+zsh/.zsh_history
+zsh/.zcompdump
+zsh/.zsh_plugins.zsh

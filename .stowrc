@@ -1,3 +1,5 @@
 --target=~/.config
 --ignore=.stowrc
+--ignore=scripts
+--ignore=example-zshenv
 --ignore=install.sh

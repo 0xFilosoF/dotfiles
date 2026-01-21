@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+TYPE=$(gum choose "feat" "fix" "refactor" "chore" "perf" "upd" "bug" "style" "docs" "deploy" "build" "test")
+SCOPE=$(gum input --placeholder "scope (optional)")
+
+if [[ -z "$SCOPE" ]]; then
+  SCOPE_FMT=""
+elif [[ "$SCOPE" == "!" ]]; then
+  SCOPE_FMT="!"
+elif [[ "$SCOPE" == *"!" ]]; then
+  BASE="${SCOPE%?}"                  
+  SCOPE_FMT="($BASE)!"
+else
+  SCOPE_FMT="($SCOPE)"
+fi
+
+SUMMARY=$(gum input --value "$TYPE$SCOPE_FMT: " --placeholder "Summary of this change")
+
+gum confirm "Commit changes?" && git commit -m "$SUMMARY"
