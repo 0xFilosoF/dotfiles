@@ -9,3 +9,10 @@ if [[ ! -d $DRAGON_REPO ]]; then
 else
   echo ":: dragon is already installed."
 fi
+
+if command -v oh-my-posh &>/dev/null; then
+  echo ":: oh-my-posh is already installed."
+else
+  echo ":: Installing oh-my-posh..."
+  curl -s https://ohmyposh.dev/install.sh | bash -s
+fi
