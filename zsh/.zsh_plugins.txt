@@ -1,0 +1,23 @@
+# Bash plugins may also work
+unixorn/fzf-zsh-plugin
+
+# set up Zsh completions with plugins
+mattmc3/ez-compinit
+zsh-users/zsh-completions kind:fpath path:src
+
+# frameworks like oh-my-zsh are supported
+getantidote/use-omz                  # handle OMZ dependencies
+ohmyzsh/ohmyzsh path:lib             # load OMZ's library
+ohmyzsh/ohmyzsh path:plugins/zoxide  # load OMZ plugins
+ohmyzsh/ohmyzsh path:plugins/git
+
+# lighter-weight ones like zsh-utils
+belak/zsh-utils path:editor
+belak/zsh-utils path:history
+belak/zsh-utils path:prompt
+
+# add fish-like features
+zsh-users/zsh-autosuggestions
+zdharma-continuum/fast-syntax-highlighting kind:defer
+# zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search

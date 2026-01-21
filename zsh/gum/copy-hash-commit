@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+git log --oneline | gum filter | cut -d' ' -f1 | xclip -selection clipboard # wl-copy for Wayland
