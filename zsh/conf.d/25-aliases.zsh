@@ -7,7 +7,7 @@
 # -----------------------------------------------------
 alias c='clear'
 alias v='$EDITOR'
-alias fd='find'
+alias find='fd'
 alias fman="compgen -c | fzf | xargs man"
 alias gcm="$ZDOTDIR/gum/commit"
 alias chc="$ZDOTDIR/gum/copy-hash-commit"
