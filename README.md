@@ -8,3 +8,11 @@
 ```bash
 stow .
 ```
+
+### Setup with zsh:
+
+Installation some packages and utils with zsh and for zsh. Run:
+
+```bash
+./install.zsh
+```
